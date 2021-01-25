@@ -1,21 +1,23 @@
-## January 2021
-## Alice Balard
-## Nucleotide diversity for E139, E64, and E88 (SNPs per kb)
-## Hyp. of Emanuel: I have the suspicion that the original E139 could have been more diverse and therefore responded to selection, while the original E64 was less diverse and couldn't respond therfore...
+## January 2021 Alice Balard Nucleotide diversity for E139, E64, and
+## E88 (SNPs per kb) Hyp. of Emanuel: I have the suspicion that the
+## original E139 could have been more diverse and therefore responded
+## to selection, while the original E64 was less diverse and couldn't
+## respond therfore...
 
 ## This script calls files that were created based on the code detailed in 
 ## /SAN/Eimeria_Wild_Genomes/Assembly_Masurca/readme.txt 
 
 library("PopGenome")
-set.wd("/SAN/Eimeria_Wild_Genomes/Assembly_Masurca")
+setwd("/SAN/Eimeria_Wild_Genomes/Assembly_Masurca")
 
-## E. ferrisi analysis. Let's use E64 as reference genome, and mapps E139 pop and E64 pop to it; then get within and between diversity
+## E. ferrisi analysis. Let's use E64 as reference genome, and mapps
+## E139 pop and E64 pop to it; then get within and between diversity
 
 ## Split A VCF File Into Multiple Scaffold-VCFs
-VCF_split_into_scaffolds(VCF.file="../vcffiles/E139and64_to_E64gen.vcf", "../vcffiles/E64_bothpop64139mapped_scaffolds")
+## VCF_split_into_scaffolds(VCF.file="vcffiles/E139and64_to_E64gen.vcf", "vcffiles/E64_bothpop64139mapped_scaffolds")
 
 ## READ IN DATA
-GENOME.class.E139and64_to64gen <- readData("../vcffiles/E64_bothpop64139mapped_scaffolds/", format="VCF")
+GENOME.class.E139and64_to64gen <- readData("vcffiles/E64_bothpop64139mapped_scaffolds/", format="VCF")
 
 ## calculate nucleotide diversity
 GENOME.class.E139and64_to64gen <- diversity.stats(GENOME.class.E139and64_to64gen, pi = "True")
